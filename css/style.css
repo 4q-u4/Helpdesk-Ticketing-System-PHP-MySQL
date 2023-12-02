@@ -81,6 +81,7 @@ body {
     display: flex;
     flex-flow: column;
 }
+
 .home .tickets-list .ticket {
     padding: 15px 0;
     width: 100%;
@@ -197,3 +198,7 @@ body {
 .create form input[type="submit"]:hover, .view form input[type="submit"]:hover {
     background-color: #32a367;
 }
+
+/*QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ*/
+
+

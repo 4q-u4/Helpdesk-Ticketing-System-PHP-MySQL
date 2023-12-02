@@ -21,14 +21,18 @@ function template_header($title) {
         <head>
             <meta charset="utf-8">
             <title>$title</title>
-            <link href="style.css" rel="stylesheet" type="text/css">
+            <link href="css/style.css" rel="stylesheet" type="text/css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
         </head>
         <body>
         <nav class="navtop">
             <div>
                 <h1>Ticketing System</h1>
-                <a href="index.php"><i class="fas fa-ticket-alt"></i>Tickets</a>
+                <a href="index.php"><i class="fas fa-table"></i>Dashboard</a>
+                <a href="create.php"><i class="fas fa-ticket-alt"></i>Create Ticket</a>
+                <a href="account.php"><i class="fas fa-user"></i>My Account</a>
+                
+
             </div>
         </nav>
     EOT;
@@ -42,3 +46,63 @@ function template_footer() {
     EOT;
     }
     ?>
+
+<?php
+//testetstststssstststssts
+	function CheckUsername($username)
+	{
+		$file = fopen("login.txt", "r");
+		if(!$file)
+		{
+			die("Unable to open the file");
+		}
+		$userExists = false;
+		while ($line = fgets($file)) 
+		{
+			$data = explode(":", $line);
+			if ($data[0] == $username) 
+			{
+				$userExists = true;
+				break;
+			}
+		}
+		fclose($file);
+		
+		return $userExists;
+	}
+
+	function UserRegistration($username, $password, $uploadFile)
+	{
+		$userDetails = "$username:$password:$uploadFile\n";
+
+		// Append the new user to the login.txt file
+		$file = fopen("login.txt", "a");
+		if(!$file)
+		{
+			die("Unable to open the file");
+		}
+		fwrite($file, $userDetails);
+		fclose($file);	
+	}
+
+	function Login($username, $password)
+	{
+		$file = fopen("login.txt", "r");
+		if(!$file)
+		{
+			die("Unable to open the file");
+		}
+		$authenticated = false;
+		while ($line = fgets($file)) 
+		{
+			$data = explode(":", $line);
+			if ($data[0] == $username && $password == $data[1]) 
+			{
+				$authenticated = true;
+				break;
+			}
+		}
+		fclose($file);
+		return $authenticated;
+	}
+?>
