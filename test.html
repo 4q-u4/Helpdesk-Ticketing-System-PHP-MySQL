@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="css/style.css">
+		<title>User Registration and Login</title>
+	</head>
+
+	<body>
+		<div class="form-container">
+			<h2>User Login</h2>
+			<form action="Login.php" method="post">0 
+				<input type="email" name="email" placeholder="Email" required>
+				<input type="password" name="password" placeholder="Password" required>
+				<input type="submit" value="Login">
+			</form>
+		</div>
+
+		<div class="form-container">
+			<h2 style="color:green">
+			<?php if(isset($_GET['Message'])) echo $_GET['Message']; ?></h2>
+			<h2>User Registration</h2>
+			<!-- Updated form with enctype -->
+			<form action="Registration.php" method="post" enctype="multipart/form-data">
+				<input type="text" name="firstname" value="" placeholder="First Name" required><span class="error">
+				<?php if(isset($_GET['firstname_err'])) echo $_GET['firstname_err']; ?></span>
+				<span class="error">
+				<?php if(isset($_GET['firstname_err'])) echo $_GET['firstname_err']; ?></span>
+				<input type="text" name="lastname" placeholder="Last Name" required>
+				<span class="error">
+				<?php if(isset($_GET['lastname_err'])) echo $_GET['lastname_err']; ?></span>
+				<input type="email" name="email" placeholder="Email" required>
+				<span class="error">
+				<?php if(isset($_GET['email_err'])) echo $_GET['email_err']; ?></span>
+				<input type="password" name="password" placeholder="Password" required>
+				<span class="error">
+				<?php if(isset($_GET['password_err'])) echo $_GET['password_err']; ?></span>
+				<input type="password" name="confirm_password" placeholder="Confirm Password" required>
+				<span class="error">
+				<?php if(isset($_GET['confirm_password_err'])) echo $_GET['confirm_password_err']; ?></span>
+				<!-- File upload field -->
+				<input type="file" name="image" accept="image/*"><span class="error">
+				<?php if(isset($_GET['file_err'])) echo $_GET['file_err']; ?></span>
+				<input type="submit" value="Register" name="Register">
+			</form>
+		</div>
+	</body>
+</html>
